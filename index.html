@@ -1,0 +1,371 @@
+<!-- /*
+- Bootstrap 5
+- Template Name: Furni
+- Template Author: Untree.co
+- Template URI: https://untree.co/
+- License: https://creativecommons.org/licenses/by/3.0/
+*/ -->
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="Untree.co">
+<link rel="shortcut icon" href="favicon.png">
+<meta name="description" content="Persewaan Tenda dan Alat Pesta Cipta Wahana Karya (CWK)" />
+<meta name="keywords" content="sewa tenda, alat pesta, pernikahan, cwk, cipta wahana karya" />
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+<link href="css/tiny-slider.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<title>Cipta Wahana Karya (CWK) - Sewa Tenda & Alat Pesta</title>
+<style>
+:root{--hijau:#3b5d50;--emas:#f9bf29;--gelap:#2b3a34}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* [P6][P16] Navbar sticky + menu aktif mengikuti scroll */
+.sticky-navbar{position:sticky;top:0;z-index:1050;box-shadow:0 4px 6px rgba(0,0,0,.1)}
+.custom-navbar-nav .nav-link.aktif{color:var(--emas)!important;border-bottom:2px solid var(--emas)}
+
+/* [P12] Progress bar scroll = umpan balik posisi */
+#progress{position:fixed;top:0;left:0;height:4px;width:0;background:var(--emas);z-index:2000}
+
+/* Bunting / jajaran bendera pesta */
+.bunting{height:34px;background:
+ linear-gradient(135deg,var(--emas) 25%,transparent 25%) 0 0/34px 34px,
+ linear-gradient(225deg,#e4572e 25%,transparent 25%) 17px 0/34px 34px,
+ linear-gradient(135deg,#fff 25%,transparent 25%) 34px 0/34px 34px;
+ background-color:var(--hijau);clip-path:polygon(0 0,100% 0,100% 55%,0 55%);opacity:.95}
+
+/* Hero */
+.hero-logo-wrap{position:relative;display:flex;justify-content:center;align-items:center;animation:floatLogo 6s ease-in-out infinite;padding:20px}
+.hero-logo-wrap::before{content:'';position:absolute;width:70%;height:70%;background:radial-gradient(circle,rgba(249,191,41,.4),transparent 70%);z-index:-1;filter:blur(40px)}
+.hero-logo-wrap img{border-radius:25px;box-shadow:0 25px 50px rgba(0,0,0,.4);border:4px solid rgba(255,255,255,.1);transition:all .5s;max-width:90%}
+.hero-logo-wrap img:hover{transform:scale(1.03);border-color:rgba(249,191,41,.5)}
+@keyframes floatLogo{50%{transform:translateY(-15px)}}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+.btn-wa{background:var(--emas);color:var(--hijau);font-weight:700;border-radius:30px;padding:12px 28px;text-decoration:none;transition:.3s}
+.btn-wa:hover{background:#fff;transform:translateY(-3px)}
+.btn-ghost{border:2px solid #fff;color:#fff;border-radius:30px;padding:10px 26px;text-decoration:none;transition:.3s}
+.btn-ghost:hover{background:#fff;color:var(--hijau)}
+
+/* [P7] Statistik sederhana */
+.stats{background:var(--hijau);color:#fff;padding:28px 0}
+.stats .angka{font-size:2.2rem;font-weight:800;color:var(--emas);line-height:1}
+.stats small{opacity:.85}
+
+/* [P8] Kartu produk interaktif (tilt mengikuti kursor) */
+.product-item{transition:transform .15s ease-out;transform-style:preserve-3d}
+.product-item .product-thumbnail{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;box-shadow:0 10px 25px rgba(0,0,0,.12)}
+.btn-pesan{display:inline-block;margin-top:10px;padding:8px 22px;background:var(--hijau);color:#fff;border-radius:30px;font-size:14px;transition:.3s;text-decoration:none}
+.btn-pesan:hover{background:var(--emas);color:var(--hijau)}
+
+/* [P3] Alur sewa: 4 langkah */
+.alur{background:#fff8e6}
+.langkah{position:relative;text-align:center;padding:10px 15px}
+.langkah .no{width:64px;height:64px;border-radius:50%;background:var(--hijau);color:var(--emas);display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin:0 auto 14px;box-shadow:0 0 0 6px rgba(59,93,80,.15)}
+.langkah h4{font-size:1.05rem;font-weight:800;color:var(--gelap)}
+.langkah p{font-size:.9rem;color:#6c757d;margin:0}
+@media(min-width:992px){.langkah:not(:last-child)::after{content:"";position:absolute;top:42px;right:-18%;width:36%;border-top:3px dashed var(--emas)}}
+
+/* Visi & Misi */
+.visimisi{background:linear-gradient(160deg,var(--hijau),#26403a);color:#fff}
+.visi-box{background:rgba(255,255,255,.08);border:1px solid rgba(249,191,41,.4);border-radius:24px;padding:36px;height:100%}
+.visi-box h3{color:var(--emas);font-weight:800}
+.visi-box .kutip{font-size:1.25rem;line-height:1.7;font-style:italic}
+.misi-item{display:flex;gap:16px;background:#fff;color:var(--gelap);border-radius:18px;padding:18px 20px;margin-bottom:14px;transition:.3s;border-left:6px solid var(--emas)}
+.misi-item:hover{transform:translateX(8px)}
+.misi-item i{font-size:1.5rem;color:var(--hijau);margin-top:4px}
+.misi-item h4{font-size:1rem;font-weight:800;margin:0 0 4px}
+.misi-item p{font-size:.9rem;margin:0;color:#6c757d}
+
+/* Struktur organisasi */
+#organisasi{background-color:#f4f7f6!important;background-image:radial-gradient(var(--hijau) 1px,transparent 1px);background-size:25px 25px}
+.org-chart-wrapper{overflow-x:auto;padding:30px 0 50px}
+.tree ul{padding:25px 0 0;position:relative;display:flex;justify-content:center;margin:0 auto}
+.tree li{text-align:center;list-style:none;position:relative;padding:25px 15px 0;display:flex;flex-direction:column;align-items:center}
+.tree li::before,.tree li::after{content:'';position:absolute;top:0;right:50%;border-top:3px solid var(--hijau);width:50%;height:25px}
+.tree li::after{right:auto;left:50%;border-left:3px solid var(--hijau)}
+.tree li:only-child::after,.tree li:only-child::before{display:none}
+.tree li:only-child{padding-top:0}
+.tree li:first-child::before,.tree li:last-child::after{border:0 none}
+.tree li:last-child::before{border-right:3px solid var(--hijau);border-radius:0 15px 0 0}
+.tree li:first-child::after{border-radius:15px 0 0 0}
+.tree ul ul::before{content:'';position:absolute;top:0;left:50%;border-left:3px solid var(--hijau);height:25px;transform:translateX(-50%)}
+.tree li div.node{padding:30px 20px 20px;display:flex;flex-direction:column;align-items:center;border-radius:20px;min-width:230px;max-width:260px;background:#fff;box-shadow:0 15px 35px rgba(0,0,0,.06);position:relative;overflow:hidden;transition:.4s cubic-bezier(.175,.885,.32,1.275)}
+.tree li div.node::before{content:"";position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(90deg,var(--emas),var(--hijau))}
+.tree li div.node:hover{transform:translateY(-10px)}
+.node-icon{width:70px;height:70px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;margin-bottom:15px;background:#f8f9fa;color:var(--hijau);transition:.4s}
+@keyframes pulse-ring{0%{box-shadow:0 0 0 0 rgba(249,191,41,.7)}70%{box-shadow:0 0 0 20px rgba(249,191,41,0)}100%{box-shadow:0 0 0 0 rgba(249,191,41,0)}}
+.top-node .node-icon{background:linear-gradient(135deg,var(--emas),#e6a700);color:#fff;animation:pulse-ring 2s infinite}
+.node:hover .node-icon{transform:scale(1.15) rotate(5deg);background:var(--hijau);color:var(--emas)}
+.tree li div.node h3{font-size:1.2rem;font-weight:800;color:var(--gelap);margin-bottom:8px}
+.tree li div.node p{font-size:.85rem;margin:0;line-height:1.6;color:#6c757d}
+@media(max-width:768px){.tree ul{flex-direction:column;align-items:center}.tree li{padding:15px 0;width:100%}.tree li::before,.tree li::after,.tree ul ul::before{display:none}.tree li div.node{width:90%;max-width:350px}}
+
+/* [P9] Kontrol: tombol kembali ke atas */
+#backToTopBtn{position:fixed;right:24px;bottom:20px;z-index:99;display:none;align-items:center;justify-content:center;width:54px;height:54px;border:none;border-radius:50%;font-size:22px;background:var(--emas);color:var(--hijau);cursor:pointer;box-shadow:0 4px 10px rgba(0,0,0,.25);transition:.3s}
+#backToTopBtn:hover{transform:translateY(-5px)}
+
+/* [P12] Toast umpan balik saat klik Pesan */
+#toast{position:fixed;left:50%;bottom:30px;transform:translate(-50%,120px);background:var(--gelap);color:#fff;padding:12px 22px;border-radius:30px;z-index:3000;transition:transform .4s;box-shadow:0 8px 20px rgba(0,0,0,.3)}
+#toast.tampil{transform:translate(-50%,0)}
+:focus-visible{outline:3px solid var(--emas);outline-offset:3px}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<!-- [P6 Familiarity][P5 Consistency] Navbar standar: logo kiri, menu kanan, ikon WA -->
+<nav class="custom-navbar navbar navbar-expand-md navbar-dark bg-dark sticky-navbar" aria-label="Navigasi utama CWK">
+  <div class="container">
+    <a class="navbar-brand" href="#" title="Kembali ke Beranda">CWK<span>.</span></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Buka menu"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navbarsFurni">
+      <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
+        <li class="nav-item"><a class="nav-link" href="#beranda">Beranda</a></li>
+        <li><a class="nav-link" href="#produk">Produk</a></li>
+        <li><a class="nav-link" href="#cara-sewa">Cara Sewa</a></li>
+        <li><a class="nav-link" href="#sejarah">Tentang Kami</a></li>
+        <li><a class="nav-link" href="#visimisi">Visi Misi</a></li>
+        <li><a class="nav-link" href="#organisasi">Tim Kami</a></li>
+        <li><a class="nav-link" href="#lokasi">Lokasi</a></li>
+      </ul>
+      <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
+        <li><a class="nav-link" href="https://wa.me/6281391501405" target="_blank" rel="noopener noreferrer" title="Hubungi kami via WhatsApp"><img src="images/user.svg" alt="Kontak WhatsApp"></a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="bunting" aria-hidden="true"></div>
+
+<!-- HERO -->
+<div class="hero" id="beranda">
+  <div class="container">
+    <div class="row justify-content-between align-items-center">
+      <div class="col-lg-5">
+        <div class="intro-excerpt">
+          <h1>Sewa Tenda <span class="d-block">& Alat Pesta Impian</span></h1>
+          <!-- [P1 User Compatibility] Bahasa Indonesia sehari-hari, langsung ke inti -->
+          <p class="mb-4" style="text-align:justify">Hari bahagia Anda, kami yang siapkan tendanya. CWK menyediakan tenda, panggung, kursi, meja, sound system, dan alat makan yang bersih dan terawat.</p>
+          <!-- [P2 Task Compatibility] Tugas utama pengunjung (pesan) ada di hero -->
+          <div class="hero-cta">
+            <a class="btn-wa" href="https://wa.me/6281391501405?text=Halo%20CWK,%20saya%20ingin%20tanya%20sewa%20tenda" target="_blank" rel="noopener noreferrer" data-toast="Membuka WhatsApp admin CWK..."><i class="fab fa-whatsapp"></i> Tanya Admin</a>
+            <a class="btn-ghost" href="#produk">Lihat Produk</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-7">
+        <div class="hero-logo-wrap"><img src="images/logo cwk 1.jpg" class="img-fluid" alt="Logo Cipta Wahana Karya (CWK)"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- [P7 Simplicity] Angka ringkas, satu baris -->
+<div class="stats">
+  <div class="container"><div class="row text-center g-3">
+    <div class="col-6 col-md-3"><div class="angka" data-hitung="15" data-akhiran="+">0</div><small>Tahun berpengalaman</small></div>
+    <div class="col-6 col-md-3"><div class="angka" data-hitung="500" data-akhiran="+">0</div><small>Acara terlayani</small></div>
+    <div class="col-6 col-md-3"><div class="angka" data-hitung="6">0</div><small>Jenis layanan</small></div>
+    <div class="col-6 col-md-3"><div class="angka" data-hitung="100" data-akhiran="%">0</div><small>Peralatan terawat</small></div>
+  </div></div>
+</div>
+
+<!-- PRODUK -->
+<div class="product-section" id="produk">
+  <div class="container">
+    <div class="row mb-5"><div class="col-md-12 text-center">
+      <h2 class="section-title">Layanan & Produk Kami</h2>
+      <p>Pilih perlengkapan, klik Pesan, langsung terhubung ke admin.</p>
+    </div></div>
+    <div class="row">
+      <!-- [P5 Consistency] Semua kartu memakai struktur & tombol identik -->
+      <div class="col-12 col-md-4 mb-5 text-center"><div class="product-item tilt">
+        <img src="images/tenda pernikahan.jpg" class="img-fluid product-thumbnail" alt="Sewa Tenda Pernikahan VIP, Roder, dan Plafon">
+        <h3 class="product-title mt-3">Tenda Pernikahan</h3><strong class="product-price">Tenda VIP, Roder, Plafon</strong>
+        <div><a href="https://wa.me/6281391501405?text=Halo%20CWK,%20saya%20ingin%20pesan%20Tenda%20Pernikahan" target="_blank" rel="noopener noreferrer" class="btn-pesan" data-toast="Membuka WhatsApp: Tenda Pernikahan"><i class="fab fa-whatsapp"></i> Pesan</a></div>
+      </div></div>
+      <div class="col-12 col-md-4 mb-5 text-center"><div class="product-item tilt">
+        <img src="images/panggung pernikahan.jpg" class="img-fluid product-thumbnail" alt="Sewa Panggung Acara dan Pelaminan">
+        <h3 class="product-title mt-3">Panggung Acara</h3><strong class="product-price">Panggung Pelaminan & Hiburan</strong>
+        <div><a href="https://wa.me/6281391501405?text=Halo%20CWK,%20saya%20ingin%20pesan%20Panggung%20Acara" target="_blank" rel="noopener noreferrer" class="btn-pesan" data-toast="Membuka WhatsApp: Panggung Acara"><i class="fab fa-whatsapp"></i> Pesan</a></div>
+      </div></div>
+      <div class="col-12 col-md-4 mb-5 text-center"><div class="product-item tilt">
+        <img src="images/kursi pernikahan 3.jpg" class="img-fluid product-thumbnail" alt="Sewa Kursi Tamu Futura, Tiffany, dan Plastik">
+        <h3 class="product-title mt-3">Kursi Tamu</h3><strong class="product-price">Kursi Futura, Tiffany, Plastik</strong>
+        <div><a href="https://wa.me/6281391501405?text=Halo%20CWK,%20saya%20ingin%20pesan%20Kursi%20Tamu" target="_blank" rel="noopener noreferrer" class="btn-pesan" data-toast="Membuka WhatsApp: Kursi Tamu"><i class="fab fa-whatsapp"></i> Pesan</a></div>
+      </div></div>
+      <div class="col-12 col-md-4 mb-5 text-center"><div class="product-item tilt">
+        <img src="images/meja pernikahan.jpg" class="img-fluid product-thumbnail" alt="Sewa Meja Prasmanan dan Meja Bulat">
+        <h3 class="product-title mt-3">Meja Pesta</h3><strong class="product-price">Meja Prasmanan & Meja Bulat</strong>
+        <div><a href="https://wa.me/6281391501405?text=Halo%20CWK,%20saya%20ingin%20pesan%20Meja%20Pesta" target="_blank" rel="noopener noreferrer" class="btn-pesan" data-toast="Membuka WhatsApp: Meja Pesta"><i class="fab fa-whatsapp"></i> Pesan</a></div>
+      </div></div>
+      <div class="col-12 col-md-4 mb-5 text-center"><div class="product-item tilt">
+        <img src="images/sound system.jpg" class="img-fluid product-thumbnail" alt="Sewa Sound System dan Audio Set">
+        <h3 class="product-title mt-3">Sound System</h3><strong class="product-price">Audio Set & Mikrofon</strong>
+        <div><a href="https://wa.me/6281391501405?text=Halo%20CWK,%20saya%20ingin%20pesan%20Sound%20System" target="_blank" rel="noopener noreferrer" class="btn-pesan" data-toast="Membuka WhatsApp: Sound System"><i class="fab fa-whatsapp"></i> Pesan</a></div>
+      </div></div>
+      <div class="col-12 col-md-4 mb-5 text-center"><div class="product-item tilt">
+        <img src="images/alat makan.jpg" class="img-fluid product-thumbnail" alt="Sewa Alat Makan Catering">
+        <h3 class="product-title mt-3">Alat Makan (Catering)</h3><strong class="product-price">Piring, Sendok, Garpu, Gelas</strong>
+        <div><a href="https://wa.me/6281391501405?text=Halo%20CWK,%20saya%20ingin%20pesan%20Alat%20Makan" target="_blank" rel="noopener noreferrer" class="btn-pesan" data-toast="Membuka WhatsApp: Alat Makan"><i class="fab fa-whatsapp"></i> Pesan</a></div>
+      </div></div>
+    </div>
+  </div>
+</div>
+
+<!-- [P3 Work Flow Compatibility] Alur sewa berurutan, sesuai cara orang memesan -->
+<div class="alur py-5" id="cara-sewa">
+  <div class="container">
+    <div class="text-center mb-5"><h2 class="section-title">Empat Langkah Sewa</h2><p>Dari tanya sampai tenda berdiri, tanpa ribet.</p></div>
+    <div class="row g-4">
+      <div class="col-6 col-lg-3 langkah"><div class="no"><i class="fa-brands fa-whatsapp"></i></div><h4>Hubungi Admin</h4><p>Kirim tanggal & lokasi acara lewat WhatsApp.</p></div>
+      <div class="col-6 col-lg-3 langkah"><div class="no"><i class="fa-solid fa-clipboard-list"></i></div><h4>Pilih & Konfirmasi</h4><p>Tentukan alat, terima rincian harga, bayar DP.</p></div>
+      <div class="col-6 col-lg-3 langkah"><div class="no"><i class="fa-solid fa-truck-fast"></i></div><h4>Kami Pasang</h4><p>Tim lapangan datang & memasang tepat waktu.</p></div>
+      <div class="col-6 col-lg-3 langkah"><div class="no"><i class="fa-solid fa-champagne-glasses"></i></div><h4>Acara Berjalan</h4><p>Nikmati hari Anda. Kami bongkar setelahnya.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- SEJARAH -->
+<div class="we-help-section" id="sejarah">
+  <div class="container"><div class="row justify-content-between">
+    <div class="col-lg-7 mb-5 mb-lg-0"><div class="imgs-grid">
+      <div class="grid grid-1"><img src="images/Tenda 3.jpg" alt="Pemasangan tenda CWK"></div>
+      <div class="grid grid-2"><img src="images/Tenda 4.jpg" alt="Peralatan pesta CWK"></div>
+      <div class="grid grid-3"><img src="images/Tenda 2.jpg" alt="Tim CWK bertugas"></div>
+    </div></div>
+    <div class="col-lg-5 ps-lg-5">
+      <h2 class="section-title mb-4">Sejarah Cipta Wahana Karya</h2>
+      <p style="text-align:justify">Cipta Wahana Karya (CWK) didirikan pada tahun 2010 dari langkah kecil dengan semangat gotong royong. Berawal dari menyewakan tenda sederhana untuk warga sekitar, CWK terus berkembang dan dipercaya menangani berbagai event besar dan pernikahan impian.</p>
+      <p style="text-align:justify">Komitmen kami: pelayanan ramah, tepat waktu, dan peralatan yang selalu terawat. Kesuksesan acara Anda adalah kebanggaan terbesar kami.</p>
+      <ul class="list-unstyled custom-list my-4 row">
+        <li class="col-12 col-md-6 mb-3">Berpengalaman lebih dari 10 tahun</li>
+        <li class="col-12 col-md-6 mb-3">Peralatan bersih dan terawat</li>
+        <li class="col-12 col-md-6 mb-3">Pemasangan cepat dan profesional</li>
+        <li class="col-12 col-md-6 mb-3">Harga sewa bersahabat</li>
+      </ul>
+    </div>
+  </div></div>
+</div>
+
+<!-- VISI MISI -->
+<div class="visimisi py-5" id="visimisi">
+  <div class="container">
+    <div class="text-center mb-5"><h2 class="section-title" style="color:#fff">Visi & Misi</h2><p style="color:#dfe9e4">Arah yang kami jaga di setiap acara.</p></div>
+    <div class="row g-4">
+      <div class="col-lg-5"><div class="visi-box">
+        <h3><i class="fa-solid fa-eye"></i> Visi</h3>
+        <p class="kutip">Menjadi mitra persewaan tenda dan alat pesta paling dipercaya di Yogyakarta, yang membuat setiap hajatan berjalan lancar, rapi, dan berkesan.</p>
+      </div></div>
+      <div class="col-lg-7">
+        <h3 class="mb-3" style="color:var(--emas);font-weight:800"><i class="fa-solid fa-bullseye"></i> Misi</h3>
+        <div class="misi-item"><i class="fa-solid fa-medal"></i><div><h4>Kualitas terawat</h4><p>Membersihkan dan memeriksa setiap peralatan sebelum dan sesudah dipakai.</p></div></div>
+        <div class="misi-item"><i class="fa-solid fa-clock"></i><div><h4>Tepat waktu</h4><p>Memasang dan membongkar sesuai jadwal yang disepakati.</p></div></div>
+        <div class="misi-item"><i class="fa-solid fa-handshake"></i><div><h4>Ramah dan jujur</h4><p>Memberi harga terbuka dan melayani dengan sepenuh hati.</p></div></div>
+        <div class="misi-item"><i class="fa-solid fa-seedling"></i><div><h4>Tumbuh bersama warga</h4><p>Membuka lapangan kerja dan mendukung usaha lokal di sekitar kami.</p></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STRUKTUR ORGANISASI -->
+<div class="why-choose-section py-5" id="organisasi">
+  <div class="container">
+    <div class="row mb-3"><div class="col-md-12 text-center">
+      <h2 class="section-title">Struktur Organisasi</h2>
+      <p>Di balik setiap acara ada tim CWK yang solid dan saling melengkapi.</p>
+    </div></div>
+    <div class="org-chart-wrapper"><div class="tree"><ul><li>
+      <div class="node top-node"><div class="node-icon"><i class="fa-solid fa-crown"></i></div><h3>Owner</h3><p>Memimpin arah bisnis & menjaga standar kualitas CWK.</p></div>
+      <ul>
+        <li><div class="node"><div class="node-icon"><i class="fa-solid fa-laptop-code"></i></div><h3>Admin</h3><p>Melayani pemesanan, mengatur jadwal & administrasi.</p></div></li>
+        <li><div class="node"><div class="node-icon"><i class="fa-solid fa-boxes-stacked"></i></div><h3>Staff Gudang</h3><p>Perawatan, pengecekan, dan kebersihan inventaris.</p></div></li>
+        <li><div class="node"><div class="node-icon"><i class="fa-solid fa-truck-fast"></i></div><h3>Staff Lapangan</h3><p>Pemasangan alat kuat, rapi & tepat waktu.</p></div></li>
+      </ul>
+    </li></ul></div></div>
+  </div>
+</div>
+
+<!-- LOKASI -->
+<div class="blog-section" id="lokasi">
+  <div class="container">
+    <div class="row mb-4"><div class="col-12 text-center">
+      <h2 class="section-title">Lokasi Gudang & Kantor Kami</h2>
+      <p>Kunjungi kami untuk melihat langsung kualitas tenda dan alat pesta.</p>
+    </div></div>
+    <div class="map-responsive" style="overflow:hidden;padding-bottom:400px;position:relative;height:0;border-radius:15px;box-shadow:0 10px 30px rgba(0,0,0,.05)">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.0987413894636!2d110.38786897506374!3d-7.779354442240177!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a59cf5487d94f%3A0xc86d3a4e1ba4e08d!2sCipta%20Wahana%20Karya%20(%20CWK%20)!5e0!3m2!1sid!2sid!4v1794568331603!5m2!1sid!2sid" title="Peta Lokasi Gudang Cipta Wahana Karya" style="left:0;top:0;height:100%;width:100%;position:absolute;border:0" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </div>
+  </div>
+</div>
+
+<footer class="footer-section">
+  <div class="container relative">
+    <div class="row g-5 mb-5 mt-5">
+      <div class="col-lg-4">
+        <div class="mb-4 footer-logo-wrap"><a href="#beranda" class="footer-logo">CWK<span>.</span></a></div>
+        <p class="mb-4" style="text-align:justify">Cipta Wahana Karya (CWK) adalah mitra terpercaya untuk pernikahan, tasyakuran, maupun event perusahaan dengan peralatan pesta berkualitas dan pelayanan profesional.</p>
+        <ul class="list-unstyled custom-social">
+          <li><a href="https://wa.me/6281391501405" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><span class="fa fa-brands fa-whatsapp"></span></a></li>
+          <li><a href="https://www.instagram.com/persewaancwk/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><span class="fa fa-brands fa-instagram"></span></a></li>
+        </ul>
+      </div>
+      <div class="col-lg-8"><div class="row links-wrap">
+        <div class="col-6 col-md-4"><ul class="list-unstyled"><li><a href="#sejarah">Tentang Kami</a></li><li><a href="#visimisi">Visi Misi</a></li><li><a href="#organisasi">Tim Kerja</a></li><li><a href="#lokasi">Lokasi Gudang</a></li></ul></div>
+        <div class="col-6 col-md-4"><ul class="list-unstyled"><li><a href="#produk">Sewa Tenda</a></li><li><a href="#produk">Alat Makan</a></li><li><a href="#produk">Sound System</a></li><li><a href="#cara-sewa">Cara Sewa</a></li></ul></div>
+        <div class="col-6 col-md-4"><ul class="list-unstyled"><li><a href="https://wa.me/6281391501405" target="_blank" rel="noopener noreferrer">Hubungi Admin (WA)</a></li><li><a href="https://www.instagram.com/persewaancwk/" target="_blank" rel="noopener noreferrer">Instagram</a></li></ul></div>
+      </div></div>
+    </div>
+    <div class="border-top copyright"><div class="row pt-4"><div class="col-lg-6">
+      <p class="mb-2 text-center text-lg-start">Copyright &copy;<script>document.write(new Date().getFullYear());</script>. All Rights Reserved. &mdash; Cipta Wahana Karya (CWK)</p>
+    </div></div></div>
+  </div>
+</footer>
+
+<!-- [P9 Control] Tombol kembali ke atas selalu bisa dijangkau -->
+<button id="backToTopBtn" title="Kembali ke atas" aria-label="Kembali ke atas"><i class="fas fa-arrow-up"></i></button>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
+const toTop=$('#backToTopBtn'),bar=$('#progress'),toast=$('#toast');
+toTop.onclick=()=>scrollTo({top:0,behavior:'smooth'});
+
+/* [P12] Scroll: progress bar, tombol atas, menu aktif */
+const secs=[...$$('#navbarsFurni a.nav-link[href^="#"]')].map(a=>({a,s:$(a.getAttribute('href'))})).filter(x=>x.s);
+addEventListener('scroll',()=>{
+  const y=document.documentElement.scrollTop,h=document.documentElement.scrollHeight-innerHeight;
+  bar.style.width=(y/h*100)+'%';
+  toTop.style.display=y>300?'flex':'none';
+  let cur=null;secs.forEach(x=>{if(x.s.getBoundingClientRect().top<=140)cur=x});
+  secs.forEach(x=>x.a.classList.toggle('aktif',x===cur));
+},{passive:true});
+
+/* [P12] Toast konfirmasi setiap klik Pesan / WhatsApp */
+let t;$$('[data-toast]').forEach(el=>el.addEventListener('click',()=>{
+  toast.textContent=el.dataset.toast;toast.classList.add('tampil');clearTimeout(t);t=setTimeout(()=>toast.classList.remove('tampil'),2500);
+}));
+
+/* [P8] Kartu produk miring mengikuti kursor */
+if(matchMedia('(hover:hover)').matches)$$('.tilt').forEach(c=>{
+  c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+    c.style.transform=`perspective(700px) rotateY(${x*8}deg) rotateX(${-y*8}deg) scale(1.03)`});
+  c.addEventListener('mouseleave',()=>c.style.transform='');
+});
+
+/* Hitung angka statistik saat terlihat */
+$$('[data-hitung]').forEach(el=>{
+  const o=new IntersectionObserver(es=>{if(!es[0].isIntersecting)return;o.disconnect();
+    const n=+el.dataset.hitung,suf=el.dataset.akhiran||'';let i=0;
+    const id=setInterval(()=>{i+=Math.max(1,Math.ceil(n/40));if(i>=n){i=n;clearInterval(id)}el.textContent=i+suf},35)},{threshold:.6});
+  o.observe(el);
+});
+</script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/tiny-slider.js"></script>
+<script src="js/custom.js"></script>
+</body>
+</html>
